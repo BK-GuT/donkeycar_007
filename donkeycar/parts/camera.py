@@ -39,6 +39,7 @@ class PiCamera(BaseCamera):
         self.camera.configure(config)
         # try min / max frame rate as 0.1 / 1 ms (it will be slower though)
         self.camera.set_controls({"FrameDurationLimits": (100, 1000)})
+        self.camera.vflip = True
         self.camera.start()
 
         # initialize the frame and the variable used to indicate

@@ -42,7 +42,8 @@ SHOW_PILOT_IMAGE = False  # show the image used to do the inference when in auto
 # PATH_MASK = "~/mycar/data/tub_1_20-03-12/*.jpg"
 
 #9865, over rides only if needed, ie. TX2..
-PCA9685_I2C_ADDR = 0x40     #I2C address, use i2cdetect to validate this number
+PCA9685_I2C_ADDR = 0x40     #steering I2C address, use i2cdetect to validate this number
+PCA9685_I2C_ADDR1 = 0x60    #throttle I2C address, use i2cdetect to validate this number
 PCA9685_I2C_BUSNUM = None   #None will auto detect, which is fine on the pi. But other platforms should specify the bus num.
 
 #SSD1306_128_32
@@ -97,13 +98,14 @@ PWM_STEERING_THROTTLE = {
 #
 # I2C_SERVO (deprecated in favor of PWM_STEERING_THROTTLE)
 #
-STEERING_CHANNEL = 1            #(deprecated) channel on the 9685 pwm board 0-15
-STEERING_LEFT_PWM = 460         #pwm value for full left steering
-STEERING_RIGHT_PWM = 290        #pwm value for full right steering
+STEERING_CHANNEL = 0            #channel on the 9685 pwm board 0-15
+STEERING_LEFT_PWM = 230         #pwm value for full left steering
+STEERING_RIGHT_PWM = 440        #pwm value for full right steering
+
 THROTTLE_CHANNEL = 0            #(deprecated) channel on the 9685 pwm board 0-15
-THROTTLE_FORWARD_PWM = 500      #pwm value for max forward throttle
-THROTTLE_STOPPED_PWM = 370      #pwm value for no movement
-THROTTLE_REVERSE_PWM = 220      #pwm value for max reverse throttle
+THROTTLE_FORWARD_PWM = 4095     #pwm value for max forward throttle
+THROTTLE_STOPPED_PWM = 0        #pwm value for no movement
+THROTTLE_REVERSE_PWM = -4095    #pwm value for max reverse throttle
 
 #
 # PIGPIO_PWM (deprecated in favor of PWM_STEERING_THROTTLE)
